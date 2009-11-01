@@ -59,11 +59,7 @@ module FakeFS
     end
 
     def self.size?(path)
-      if exists?(path) && !size(path).zero?
-        true
-      else
-        nil
-      end
+      exists?(path) && !size(path).zero? ? true : nil
     end
 
     def self.const_missing(name)
