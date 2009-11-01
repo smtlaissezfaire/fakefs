@@ -279,6 +279,15 @@ class FakeFSTest < Test::Unit::TestCase
     assert_equal 9, File.size(path)
   end
 
+  def test_has_size_instance_method
+    path = '/path/to/file.txt'
+    File.open(path, 'w') do |f|
+      f << 'Yada Yada'
+
+      assert_equal 9, f.size
+    end
+  end
+
   def test_can_check_if_file_has_size?
     path = '/path/to/file.txt'
     File.open(path, 'w') do |f|
