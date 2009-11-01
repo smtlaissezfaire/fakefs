@@ -55,7 +55,7 @@ module FakeFS
     end
 
     def self.size(path)
-      read(path).length
+      new(path).size
     end
 
     def self.size?(path)
