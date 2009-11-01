@@ -496,7 +496,7 @@ class FakeFSTest < Test::Unit::TestCase
     assert_equal 1, fp.pos
   end
 
-  IO.instance_methods.each do |method_name|
+  RealFile.instance_methods.each do |method_name|
     define_method "test_should_have_method_#{method_name}_from_io_class" do
       assert File.instance_methods.include?(method_name)
     end

@@ -257,6 +257,34 @@ module FakeFS
       raise NotImplementedError
     end
 
+    def atime
+      raise NotImplementedError
+    end
+
+    def chmod(mode_int)
+      raise NotImplementedError
+    end
+
+    def chown(owner_int, group_int)
+      raise NotImplementedError
+    end
+
+    def ctime
+      raise NotImplementedError
+    end
+
+    def flock(locking_constant)
+      raise NotImplementedError
+    end
+
+    def lstat
+      raise NotImplementedError
+    end
+
+    def mtime
+      raise NotImplementedError
+    end
+
   private
 
     def check_modes!
