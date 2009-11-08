@@ -13,19 +13,6 @@ module FakeFS
 
     FILE_CREATION_MODES = MODES - [READ_ONLY, READ_WRITE]
 
-    MODE_BITMASK = RealFile::RDONLY   |
-                   RealFile::WRONLY   |
-                   RealFile::RDWR     |
-                   RealFile::APPEND   |
-                   RealFile::CREAT    |
-                   RealFile::EXCL     |
-                   RealFile::NONBLOCK |
-                   RealFile::TRUNC    |
-                   RealFile::NOCTTY   |
-                   RealFile::SYNC
-
-    FILE_CREATION_BITMASK = RealFile::CREAT
-
     def self.extname(path)
       RealFile.extname(path)
     end
@@ -310,7 +297,7 @@ module FakeFS
     end
 
     def file_creation_mode?
-      mode_in?(FILE_CREATION_MODES) || mode_in_bitmask?(FILE_CREATION_BITMASK)
+      mode_in?(FILE_CREATION_MODES) || mode_in_bitmask?(CREAT)
     end
 
     def mode_in?(list)
