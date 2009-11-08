@@ -523,6 +523,13 @@ class FakeFSTest < Test::Unit::TestCase
     end
   end
 
+  # Every class method in RealFile should be in File
+  RealFile.methods.each do |method|
+    define_method "test_file_should_respond_to_class_method_#{method}" do
+      assert File.respond_to?(method)
+    end
+  end
+
   def test_does_not_remove_methods_from_stringio
     stringio = StringIO.new("foo")
     assert stringio.respond_to?(:size)
