@@ -22,21 +22,19 @@ module FakeFS
     def rm(path)
       FileSystem.delete(path)
     end
-
     alias_method :rm_rf, :rm
-    alias_method :rm_r, :rm
-    alias_method :rm_f, :rm
+    alias_method :rm_r,  :rm
+    alias_method :rm_f,  :rm
 
     def ln_s(target, path, options = {})
       options = { :force => false }.merge(options)
       (FileSystem.find(path) and !options[:force]) ? raise(Errno::EEXIST, path) : FileSystem.delete(path)
       FileSystem.add(path, FakeSymlink.new(target))
     end
+
     def ln_sf(target, path)
       ln_s(target, path, { :force => true })
     end
-
-
 
     def cp(src, dest)
       dst_file = FileSystem.find(dest)
