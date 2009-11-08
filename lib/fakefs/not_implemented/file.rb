@@ -143,6 +143,36 @@ module FakeFS
         def zero?(file_name)
           raise NotImplementedError
         end
+
+        if RUBY_VERSION.to_f >= 1.9
+          def absolute_path(file_name, dir_string = nil)
+            raise NotImplementedError
+          end
+
+          def binread(name, length = nil, offset = nil)
+            raise NotImplementedError
+          end
+
+          def copy_stream(src, destination, copy_length = nil, src_offset = nil)
+            raise NotImplementedError
+          end
+
+          def path(path)
+            raise NotImplementedError
+          end
+
+          def try_convert(obj)
+            raise NotImplementedError
+          end
+
+          def world_readable?(file_name)
+            raise NotImplementedError
+          end
+
+          def world_writable?(file_name)
+            raise NotImplementedError
+          end
+        end
       end
 
       module InstanceMethods
