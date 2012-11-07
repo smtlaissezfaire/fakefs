@@ -36,6 +36,10 @@ Usage
 Don't Fake the FS Immediately
 -----------------------------
 
+``` ruby
+gem "fakefs", :require => "fakefs/safe"
+```
+
     require 'fakefs/safe'
 
     FakeFS.activate!
