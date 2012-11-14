@@ -313,6 +313,22 @@ module FakeFS
       def to_path
         raise NotImplementedError
       end
+
+      def fdatasync
+        raise NotImplementedError
+      end
+
+      def size
+        raise NotImplementedError
+      end
+
+      def autoclose?
+        raise NotImplementedError
+      end
+
+      def autoclose=(*args)
+        raise NotImplementedError
+      end
     end
 
   private
