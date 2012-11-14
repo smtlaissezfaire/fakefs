@@ -1,22 +1,26 @@
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), 'test')
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..')
 
-desc "Run tests"
-task :test do
-  Dir['test/**/*_test.rb'].each { |file| require file }
+require "rubygems"
+require "bundler/setup"
+
+require 'rake/testtask'
+
+Rake::TestTask.new do |t|
+  t.libs << "test"
+  t.test_files = FileList['test/**/*test.rb']
+  t.verbose = true
 end
 
-task :default => [:test, :spec]
-
 begin
-  require 'spec/rake/spectask'
-
+  require 'rspec/core/rake_task'
   desc "Run specs"
-  Spec::Rake::SpecTask.new(:spec) do |t|
-    t.spec_files = FileList["spec/**/*.rb"]
-  end
+  RSpec::Core::RakeTask.new(:spec)
 rescue LoadError
   puts "Spec task can't be loaded. `gem install rspec`"
 end
+
+task :default => [:test, :spec]
 
 begin
   require 'jeweler'

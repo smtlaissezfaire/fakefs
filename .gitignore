@@ -1,2 +1,4 @@
 *.sw?
 docs
+pkg
+fakefs.gemspec
